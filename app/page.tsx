@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
+import HeroSection from './(public)/(components)/HeroSection';
 
 const Home = () => {
-	return <div>Home</div>;
+	return (
+		<div>
+			<HeroSection />
+		</div>
+	);
 };
 
 export default Home;

@@ -57,7 +57,8 @@ export default function HeroSlider() {
 	}, []);
 
 	return (
-		<div className='relative h-screen bg-slate-300  text-white overflow-hidden'>
+		<div className='  bg-slate-300 text-white overflow-hidden'>
+			{/* <div className='mt-20'> */}
 			<Slider ref={sliderRef} {...settings}>
 				{slides.map((slide, index) => (
 					<div
@@ -76,7 +77,7 @@ export default function HeroSlider() {
 					</div>
 				))}
 			</Slider>
-
+			{/* </div> */}
 			<div className='absolute left-4 top-1/2 transform -translate-y-1/2'>
 				<Button
 					variant='outline'

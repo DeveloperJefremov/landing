@@ -18,12 +18,8 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className='flex flex-col '>
 				<LandingHeader />
-				<div
-				// className='mt-16'
-				>
-					{children}
-				</div>
 
+				<div className='h-dvh'>{children}</div>
 				<LandingFooter />
 			</body>
 		</html>

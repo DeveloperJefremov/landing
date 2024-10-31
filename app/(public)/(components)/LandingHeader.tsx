@@ -1,11 +1,11 @@
 'use client';
 
-import { Button } from '@/components/ui/button'
-import { Clock, LogIn } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { Button } from '@/components/ui/button';
+import { Clock, LogIn } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function LandingHeader() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -29,9 +29,8 @@ export default function LandingHeader() {
 
 	return (
 		<header
-			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b border-gray-200  ${
-				scrolled ? 'bg-white/80 backdrop-blur-md shadow-md' : 'bg-transparent'
-			}`}
+			className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b  border-gray-200 
+				 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-md ' : 'bg-transparent'}`}
 		>
 			<div className='w-full flex justify-between items-center h-16'>
 				<div className='flex items-center space-x-8 pl-4'>

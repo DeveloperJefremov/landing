@@ -1,83 +1,120 @@
-// components/HeroSection.tsx
 'use client';
 
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import {
-	Carousel,
-	CarouselContent,
-	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
-} from '@/components/ui/carousel';
-import React, { useState } from 'react';
+	BarChart,
+	Calendar,
+	ChevronLeft,
+	ChevronRight,
+	Clock,
+} from 'lucide-react';
+import React, { useCallback, useRef, useState } from 'react';
+import Slider from 'react-slick';
 
-const HeroSection = () => {
-	const [activeIndex, setActiveIndex] = useState(0);
+interface Slide {
+	title: string;
+	description: string;
+	icon: React.ReactNode;
+}
 
-	const slides = [
-		{ color: 'bg-blue-500', label: 'Слайд 1' },
-		{ color: 'bg-red-500', label: 'Слайд 2' },
-		{ color: 'bg-green-500', label: 'Слайд 3' },
-	];
+const slides: Slide[] = [
+	{
+		title: 'Эффективное отслеживание времени',
+		description: 'Точно фиксируйте время, потраченное на задачи и проекты',
+		icon: <Clock className='w-12 h-12 text-primary' />,
+	},
+	{
+		title: 'Подробная аналитика',
+		description: 'Получайте ценные инсайты о вашей продуктивности',
+		icon: <BarChart className='w-12 h-12 text-primary' />,
+	},
+	{
+		title: 'Планирование и расписание',
+		description: 'Эффективно управляйте своим временем и задачами',
+		icon: <Calendar className='w-12 h-12 text-primary' />,
+	},
+];
 
-	const handlePrevious = () => {
-		setActiveIndex(prevIndex =>
-			prevIndex === 0 ? slides.length - 1 : prevIndex - 1
-		);
+export default function HeroSlider() {
+	const [currentSlide, setCurrentSlide] = useState(0);
+	const sliderRef = useRef<Slider | null>(null);
+
+	const settings = {
+		dots: false,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: false,
+		beforeChange: (_: number, next: number) => setCurrentSlide(next),
 	};
 
-	const handleNext = () => {
-		setActiveIndex(prevIndex =>
-			prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-		);
-	};
-
-	const handleIndicatorClick = (index: number) => {
-		setActiveIndex(index);
-	};
+	const goToSlide = useCallback((index: number) => {
+		if (sliderRef.current) {
+			sliderRef.current.slickGoTo(index);
+		}
+	}, []);
 
 	return (
-		<Carousel>
-			<CarouselContent
-				className='w-full h-screen flex  '
-				style={{
-					transform: `translateX(-${activeIndex * 100}%)`,
-				}}
-			>
+		<div className='relative h-screen bg-slate-300  text-white overflow-hidden'>
+			<Slider ref={sliderRef} {...settings}>
 				{slides.map((slide, index) => (
-					<CarouselItem key={index} className='w-full flex-shrink-0'>
-						<div
-							className={`flex items-center justify-center ${slide.color} h-full text-white text-2xl`}
-						>
-							{slide.label}
-						</div>
-					</CarouselItem>
-				))}
-			</CarouselContent>
-			<CarouselPrevious
-				className='absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800/50 hover:bg-gray-800 text-white p-2 rounded-full'
-				onClick={handlePrevious}
-			>
-				&lt;
-			</CarouselPrevious>
-			<CarouselNext
-				className='absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800/50 hover:bg-gray-800 text-white p-2 rounded-full'
-				onClick={handleNext}
-			>
-				&gt;
-			</CarouselNext>
-			<div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2'>
-				{slides.map((_, index) => (
 					<div
 						key={index}
-						className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 cursor-pointer ${
-							index === activeIndex ? 'bg-white' : 'bg-gray-300'
+						className='h-screen flex items-center justify-center'
+					>
+						<Card className='bg-transparent border-none shadow-none'>
+							<div className='text-center space-y-6 px-4'>
+								{slide.icon}
+								<h2 className='text-4xl font-bold'>{slide.title}</h2>
+								<p className='text-xl  max-w-2xl mx-auto'>
+									{slide.description}
+								</p>
+							</div>
+						</Card>
+					</div>
+				))}
+			</Slider>
+
+			<div className='absolute left-4 top-1/2 transform -translate-y-1/2'>
+				<Button
+					variant='outline'
+					size='icon'
+					className='rounded-full bg-white/10 hover:bg-white/20'
+					onClick={() => sliderRef.current?.slickPrev()}
+					aria-label='Previous slide'
+				>
+					<ChevronLeft className='h-6 w-6' />
+				</Button>
+			</div>
+
+			<div className='absolute right-4 top-1/2 transform -translate-y-1/2'>
+				<Button
+					variant='outline'
+					size='icon'
+					className='rounded-full bg-white/10 hover:bg-white/20'
+					onClick={() => sliderRef.current?.slickNext()}
+					aria-label='Next slide'
+				>
+					<ChevronRight className='h-6 w-6' />
+				</Button>
+			</div>
+
+			<div className='absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2'>
+				{slides.map((_, index) => (
+					<Button
+						key={index}
+						variant='outline'
+						size='icon'
+						className={`rounded-full w-3 h-3 p-0 ${
+							currentSlide === index ? 'bg-white' : 'bg-white/50'
 						}`}
-						onClick={() => handleIndicatorClick(index)}
-					></div>
+						onClick={() => goToSlide(index)}
+						aria-label={`Go to slide ${index + 1}`}
+					/>
 				))}
 			</div>
-		</Carousel>
+		</div>
 	);
-};
-
-export default HeroSection;
+}

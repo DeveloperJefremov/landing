@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import LandingFooter from './(public)/(components)/LandingFooter';
 import LandingHeader from './(public)/(components)/LandingHeader';
 import './globals.css';
 
@@ -15,9 +16,15 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className='flex flex-col mt-16'>
+			<body className='flex flex-col '>
 				<LandingHeader />
-				{children}
+				<div
+				// className='mt-16'
+				>
+					{children}
+				</div>
+
+				<LandingFooter />
 			</body>
 		</html>
 	);

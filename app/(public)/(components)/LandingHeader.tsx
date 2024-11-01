@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Clock, LogIn } from 'lucide-react';
+import { Clock, LogIn, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -96,21 +96,11 @@ export default function LandingHeader() {
 					onClick={() => setIsOpen(!isOpen)}
 					aria-label='Toggle menu'
 				>
-					<svg
-						className='h-6 w-6 text-gray-600'
-						fill='none'
-						strokeLinecap='round'
-						strokeLinejoin='round'
-						strokeWidth='2'
-						viewBox='0 0 24 24'
-						stroke='currentColor'
-					>
-						{isOpen ? (
-							<path d='M6 18L18 6M6 6l12 12' />
-						) : (
-							<path d='M4 6h16M4 12h16M4 18h16' />
-						)}
-					</svg>
+					{isOpen ? (
+						<X className='h-6 w-6 text-gray-600' />
+					) : (
+						<Menu className='h-6 w-6 text-gray-600' />
+					)}
 				</button>
 			</div>
 

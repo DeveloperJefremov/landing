@@ -271,7 +271,7 @@ export default function Footer() {
 							</Link>
 						</div>
 						<div className='text-[#e57cd8] text-sm'>
-							© {new Date().getFullYear()} Toggl
+							© {new Date().getFullYear()} Time Pulse
 						</div>
 					</div>
 				</div>

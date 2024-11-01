@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 
+import Header from './(public)/(components)/Header';
 import LandingFooter from './(public)/(components)/LandingFooter';
 import LandingHeader from './(public)/(components)/LandingHeader';
+
+import Footer from './(public)/(components)/Footer';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -19,9 +22,17 @@ export default function RootLayout({
 			<body className='flex flex-col '>
 				<LandingHeader />
 
-				<div className='h-dvh'>{children}</div>
+				<div className='h-screen'>{children}</div>
 				<LandingFooter />
 			</body>
+
+			{/* <body className='h-screen'>
+				<div className='grid grid-rows-[64px_1fr_300px] '>
+					<LandingHeader />
+					<main className='h-screen'>{children}</main>
+					<LandingFooter />
+				</div>
+			</body> */}
 		</html>
 	);
 }

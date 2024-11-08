@@ -19,20 +19,13 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className='flex flex-col '>
+			<body className='flex flex-col min-h-screen'>
 				<LandingHeader />
 
-				<div className='h-screen'>{children}</div>
+				<main className='flex-grow'>{children}</main>
+
 				<LandingFooter />
 			</body>
-
-			{/* <body className='h-screen'>
-				<div className='grid grid-rows-[64px_1fr_300px] '>
-					<LandingHeader />
-					<main className='h-screen'>{children}</main>
-					<LandingFooter />
-				</div>
-			</body> */}
 		</html>
 	);
 }

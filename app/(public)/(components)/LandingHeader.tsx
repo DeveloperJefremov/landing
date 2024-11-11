@@ -16,6 +16,7 @@ export default function LandingHeader() {
 		{ href: '/features', label: 'Features' },
 		{ href: '/prices', label: 'Prices' },
 		{ href: '/contacts', label: 'Contacts' },
+		{ href: '/about-us', label: 'About Us' },
 	];
 
 	useEffect(() => {

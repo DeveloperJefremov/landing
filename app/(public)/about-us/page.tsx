@@ -4,7 +4,7 @@ import Stats from '../(components)/(about us)/Stats';
 import TeamMembers from '../(components)/(about us)/TeamMembers';
 import Testimonials from '../(components)/(about us)/Testimonials';
 
-export default function Component() {
+export default function AboutUs() {
 	return (
 		<div className='flex min-h-screen flex-col'>
 			<main className='flex-1'>

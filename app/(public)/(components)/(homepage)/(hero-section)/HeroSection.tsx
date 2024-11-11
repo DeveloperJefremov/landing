@@ -57,7 +57,7 @@ export default function HeroSlider() {
 	}, []);
 
 	return (
-		<div className=' h-[95vh] bg-slate-300 text-white overflow-hidden'>
+		<div className=' h-[95vh] bg-purple-700 text-white overflow-hidden'>
 			{/* <div className='mt-20'> */}
 			<Slider ref={sliderRef} {...settings}>
 				{slides.map((slide, index) => (

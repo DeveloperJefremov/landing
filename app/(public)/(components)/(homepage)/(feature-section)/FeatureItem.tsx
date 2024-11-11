@@ -1,6 +1,6 @@
 // components/FeatureItem.tsx
 
-import { Feature } from '../types/feature';
+import { Feature } from '../../../types/feature';
 
 type FeatureItemProps = {
 	feature: Feature;

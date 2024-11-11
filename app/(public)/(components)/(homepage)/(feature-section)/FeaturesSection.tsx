@@ -85,7 +85,7 @@ export default function FeaturesSection() {
 	const [activeFeature, setActiveFeature] = useState<Feature>(features[0]);
 
 	return (
-		<section className='py-12 md:py-24 lg:py-32'>
+		<section className='py-12 md:py-24 lg:py-32 bg-purple-700'>
 			<div className='w-full max-w-screen-xl mx-auto px-4 md:px-6'>
 				<CallToAction />
 

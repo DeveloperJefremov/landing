@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Feature } from '../types/feature';
+import { Feature } from '../../../types/feature';
 
 type FeatureDetailsProps = {
 	feature: Feature;
